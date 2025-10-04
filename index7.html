@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shape Gallery</title>
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      background: radial-gradient(circle at top left, #89f7fe, #66a6ff);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 0;
+      color: #333;
+      overflow-x: hidden;
+    }
+
+    /* Back button styling */
+    .back-btn {
+      display: inline-block;
+      text-decoration: none;
+      background-color: #2ecc71;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: 600;
+      margin: 20px auto;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+    .back-btn:hover {
+      background-color: #27ae60;
+      transform: scale(1.05);
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 60px;
+      color: #fff;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+      letter-spacing: 1.5px;
+      animation: fadeDown 1s ease;
+    }
+
+    .grid-top,
+    .grid-bottom {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      animation: fadeUp 1s ease;
+    }
+
+    .grid-bottom {
+      margin-top: 40px;
+      gap: 80px;
+    }
+
+    .shape-box {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 25px;
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+      padding: 40px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: all 0.4s ease;
+      cursor: pointer;
+      text-decoration: none;
+      position: relative;
+      overflow: hidden;
+      width: 200px;
+    }
+
+    .shape-box::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.3), transparent 70%);
+      transform: scale(0);
+      transition: transform 0.5s ease;
+      border-radius: 50%;
+    }
+
+    .shape-box:hover::before {
+      transform: scale(1);
+    }
+
+    .shape-box:hover {
+      transform: translateY(-12px) scale(1.05);
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
+    }
+
+    .shape {
+      width: 100px;
+      height: 100px;
+      margin-bottom: 20px;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .shape-box:hover .shape {
+      transform: scale(1.1) rotate(5deg);
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
+    }
+
+    .circle {
+      background: radial-gradient(circle at top left, #ff4b1f, #ff9068);
+      border-radius: 50%;
+    }
+
+    .square {
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+    }
+
+    .diamond {
+      background: linear-gradient(135deg, #93a5cf, #e4efe9);
+      transform: rotate(45deg);
+    }
+
+    .rectangle {
+      background: linear-gradient(135deg, #f7971e, #ffd200);
+      width: 120px;
+      height: 70px;
+    }
+
+    .triangle {
+      width: 0;
+      height: 0;
+      border-left: 50px solid transparent;
+      border-right: 50px solid transparent;
+      border-bottom: 100px solid #9b5de5;
+    }
+
+    .shape-name {
+      font-size: 1.3rem;
+      font-weight: bold;
+      color: #333;
+      text-align: center;
+      letter-spacing: 0.5px;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 900px) {
+      .grid-top, .grid-bottom {
+        flex-wrap: wrap;
+        gap: 30px;
+      }
+      .grid-bottom {
+        margin-top: 20px;
+        gap: 50px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Back Button -->
+  <a href="index.html" class="back-btn">⬅ Back to Portfolio</a>
+
+  <h1>🌟 Shape Gallery 🌟</h1>
+
+  <div class="grid-top">
+    <a href="circle.html" class="shape-box">
+      <div class="shape circle"></div>
+      <div class="shape-name">Circle</div>
+    </a>
+
+    <a href="square.html" class="shape-box">
+      <div class="shape square"></div>
+      <div class="shape-name">Square</div>
+    </a>
+
+    <a href="diamond.html" class="shape-box">
+      <div class="shape diamond"></div>
+      <div class="shape-name">Diamond</div>
+    </a>
+  </div>
+
+  <div class="grid-bottom">
+    <a href="rectangle.html" class="shape-box">
+      <div class="shape rectangle"></div>
+      <div class="shape-name">Rectangle</div>
+    </a>
+
+    <a href="triangle.html" class="shape-box">
+      <div class="shape triangle"></div>
+      <div class="shape-name">Triangle</div>
+    </a>
+  </div>
+
+</body>
+</html>

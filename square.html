@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Square Shape</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #a8edea, #fed6e3);
+      font-family: "Poppins", sans-serif;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .square {
+      width: 200px;
+      height: 200px;
+      background: linear-gradient(135deg, #00b09b, #96c93d);
+      border-radius: 10px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      transition: all 0.4s ease;
+    }
+
+    .square:hover {
+      transform: scale(1.1);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      background: linear-gradient(135deg, #38ef7d, #11998e);
+    }
+
+    h1 {
+      position: absolute;
+      top: 40px;
+      font-size: 2rem;
+      color: #fff;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+      width: 100%;
+      text-align: center;
+      pointer-events: none;
+    }
+
+    a {
+      position: absolute;
+      bottom: 40px;
+      text-decoration: none;
+      background: rgba(255,255,255,0.9);
+      color: #333;
+      font-weight: 600;
+      padding: 10px 25px;
+      border-radius: 30px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    a:hover {
+      background: #fff;
+      transform: translateX(-50%) scale(1.1);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .square {
+        width: 160px;
+        height: 160px;
+      }
+
+      h1 {
+        font-size: 1.8rem;
+        top: 30px;
+      }
+
+      a {
+        bottom: 30px;
+        padding: 8px 20px;
+        font-size: 0.9rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .square {
+        width: 140px;
+        height: 140px;
+      }
+
+      h1 {
+        font-size: 1.5rem;
+      }
+
+      a {
+        font-size: 0.85rem;
+        bottom: 25px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>🟩 Square Shape</h1>
+  <div class="square"></div>
+  <a href="index7.html">⬅ Back to Gallery</a>
+</body>
+</html>

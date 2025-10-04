@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delicious Recipe</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            background-color: #fffaf0; 
+        }
+
+        header {
+            text-align: center;
+            padding: 20px;
+            background-color: floralwhite;
+        }
+
+        header h1 {
+            color: darkred;
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        img {
+            display: block;
+            max-width: 80%;  
+            height: auto;
+            margin: 20px auto;
+            border-radius: 15px; 
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2); 
+            transition: transform 0.3s ease; 
+        }
+
+        img:hover {
+            transform: scale(1.05); 
+        }
+
+        section {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 0 20px;
+            background-color: #fff; 
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            border-bottom: 2px solid darkred;
+            padding-bottom: 5px;
+            color: darkred;
+        }
+
+        ul, ol {
+            padding-left: 20px;
+        }
+
+        #ingredients li {
+            color: green;
+        }
+
+        #instructions li {
+            color: mediumblue;
+        }
+
+        footer {
+            text-align: center;
+            padding: 15px;
+            background-color: floralwhite;
+            font-style: italic;
+            color: #333;
+        }
+
+        /* Back button styling */
+        .back-btn {
+            display: inline-block;
+            text-decoration: none;
+            background-color: #2ecc71;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            margin: 20px auto;
+            display: block;
+            width: max-content;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .back-btn:hover {
+            background-color: #27ae60;
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            section {
+                padding: 0 10px;
+            }
+
+            img {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Back Button -->
+    <a href="index.html" class="back-btn">⬅ Back to Portfolio</a>
+
+    <header>
+        <h1>Grandma's Chocolate Cake</h1>
+    </header>
+
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPhRJgt5tGRbL9uNUOixTuwJ3VmTxgtsVQeg&s" alt="Delicious chocolate cake">
+
+    <section id="ingredients">
+        <h2>Ingredients</h2>
+        <ul>
+            <li>2 cups all-purpose flour</li>
+            <li>1 cup sugar</li>
+            <li>1/2 cup cocoa powder</li>
+            <li>1 tsp baking soda</li>
+            <li>1/2 tsp salt</li>
+            <li>1 cup milk</li>
+            <li>1/2 cup vegetable oil</li>
+            <li>2 large eggs</li>
+            <li>1 tsp vanilla extract</li>
+        </ul>
+    </section>
+
+    <section id="instructions">
+        <h2>Instructions</h2>
+        <ol>
+            <li>Preheat the oven to 350°F (175°C).</li>
+            <li>In a large bowl, mix flour, sugar, cocoa, baking soda, and salt.</li>
+            <li>Add milk, oil, eggs, and vanilla. Beat until smooth.</li>
+            <li>Pour batter into a greased baking pan.</li>
+            <li>Bake for 30-35 minutes or until a toothpick comes out clean.</li>
+            <li>Let the cake cool before serving. Enjoy!</li>
+        </ol>
+    </section>
+
+    <footer>
+        Happy Baking! Share this cake with your loved ones.
+    </footer>
+</body>
+</html>

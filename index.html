@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Portfolio of Pratik Bothra, Full Stack Developer - AI-powered scalable web applications, activities, projects, achievements, skills, and contact details." />
+<meta name="keywords" content="Full Stack Developer, Portfolio, Web Development, AI, Aether Labs, Unifie Mentor, Projects, Achievements, Skills, HTML, CSS, JavaScript, MERN, Java, Python, MySQL" />
+<meta name="author" content="Pratik Bothra" />
+<title>Pratik Bothra | Full Stack Developer Portfolio</title>
+<style>
+  /* Reset & base */
+  *, *::before, *::after {
+    margin: 0; padding: 0; box-sizing: border-box;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #121620;
+    color: #ececec;
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 70px;
+    opacity: 0;
+    transition: opacity 1s ease;
+  }
+  a {
+    color: #63a4ff;
+    text-decoration: none;
+  }
+  a:hover, a:focus {
+    text-decoration: underline;
+    outline: none;
+  }
+
+  /* Loading spinner */
+  #loader {
+    position: fixed;
+    z-index: 2000;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: #121620;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .spinner {
+    border: 8px solid #222c3c;
+    border-top: 8px solid #64b5f6;
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    animation: spin 1.2s linear infinite;
+  }
+  @keyframes spin {
+    0% { transform: rotate(0deg);}
+    100% { transform: rotate(360deg);}
+  }
+
+  /* Navigation */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 60px;
+    background-color: #1f2937;
+    color: #cbd5e1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+    z-index: 1000;
+    box-shadow: 0 2px 8px #000a;
+  }
+  nav h1 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #64b5f6;
+  }
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1.8rem;
+  }
+  nav a {
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 0.5rem 0.3rem;
+    border-bottom: 4px solid transparent;
+    transition: border-color 0.3s, color 0.3s;
+  }
+  nav a:hover, nav a:focus {
+    border-bottom-color: #90caf9;
+    color: #90caf9;
+  }
+
+  /* Section general */
+  section {
+    background-color: #1f2937;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.7);
+    border-radius: 14px;
+    width: 90%;
+    max-width: 1200px;
+    padding: 2.5rem 3rem;
+    margin-bottom: 3rem;
+    color: #e0e7ff;
+  }
+  h2 {
+    font-size: 2.25rem;
+    color: #90caf9;
+    margin-bottom: 1.25rem;
+    border-bottom: 3px solid #64b5f6;
+    padding-bottom: 0.4rem;
+    font-weight: 700;
+  }
+
+  /* About */
+  .about-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    align-items: center;
+  }
+  .about-content .text {
+    flex: 1 1 350px;
+    font-size: 1.15rem;
+    color: #cbd5e1;
+    line-height: 1.55;
+  }
+  .about-content .image {
+    flex: 0 0 160px;
+  }
+  .profile-photo {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #64b5f6;
+    box-shadow: 0 5px 15px #4069c9cc;
+  }
+
+  /* Hero */
+  .hero {
+    text-align: center;
+    margin-bottom: 4rem;
+    color: #8eb3ff;
+  }
+  .hero h2 {
+    font-size: 3rem;
+    margin-bottom: 0.3rem;
+    font-weight: 700;
+    color: #bbdefb;
+  }
+  .hero p {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+    color: #a3bffa;
+  }
+  .btn {
+    background-color: #1e40af;
+    color: white;
+    font-weight: 700;
+    text-decoration: none;
+    padding: 1rem 2.5rem;
+    border-radius: 12px;
+    font-size: 1.2rem;
+    box-shadow: 0 5px 15px #004aad90;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  .btn:hover, .btn:focus {
+    background-color: #3b82f6;
+    box-shadow: 0 5px 30px #3b82f6d9;
+    outline: none;
+  }
+
+  /* Skills section */
+  #skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+  }
+  .skill-pill {
+    background: #273549;
+    color: #bbdefb;
+    padding: 0.6rem 1.2rem;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 1rem;
+    box-shadow: 0 0 8px #64b5f6a8;
+    user-select: none;
+    transition: background-color 0.3s, color 0.3s;
+    cursor: default;
+  }
+  .skill-pill:hover,
+  .skill-pill:focus {
+    background-color: #64b5f6;
+    color: #121620;
+    outline: none;
+  }
+
+  /* Shared grid card style for Activities & Achievements */
+  .grid {
+    display: grid;
+    gap: 2rem;
+  }
+  .card {
+    background-color: #273549;
+    border-radius: 14px;
+    padding: 2rem 2.5rem;
+    box-shadow: 0 5px 15px #152334cc;
+    cursor: default;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, color 0.3s;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #bbdefb;
+    user-select: none;
+  }
+  .card:hover,
+  .card:focus-within {
+    box-shadow: 0 10px 30px #3b82f6d9;
+    transform: translateY(-8px);
+    outline: none;
+    color: #90caf9;
+  }
+  .card h3 {
+    margin-bottom: 0.9rem;
+    font-size: 1.6rem;
+    user-select: text;
+  }
+  .card p,
+  .card ul {
+    font-weight: 600;
+    font-size: 1.15rem;
+    user-select: text;
+    padding-left: 1.2rem;
+    text-align: left;
+  }
+  .card ul {
+    list-style: disc;
+    margin-top: 0.5rem;
+  }
+
+  /* Activities grid 12 cards (4 columns max) */
+  #activities .grid {
+    grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
+  }
+  /* Wrap anchor tag around each card */
+  #activities .grid a {
+    text-decoration: none;
+    color: inherit;
+  }
+  #activities .grid a:hover .card,
+  #activities .grid a:focus .card {
+    color: #90caf9;
+    box-shadow: 0 10px 30px #3b82f6d9;
+    transform: translateY(-8px);
+    outline: none;
+  }
+
+  /* Projects grid 4 cards in 2 by 2 */
+  #projects .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  #projects .card {
+    background-color: #1e293b;
+    border-radius: 14px;
+    padding: 2rem 2.4rem;
+    box-shadow: 0 5px 15px #16233ecc;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, color 0.3s;
+    display: flex;
+    flex-direction: column;
+  }
+  #projects .card:hover,
+  #projects .card:focus-within {
+    box-shadow: 0 10px 30px #3b82f6d9;
+    transform: translateY(-8px);
+    color: #90caf9;
+  }
+  #projects .card h3 {
+    color: #90caf9;
+    margin-bottom: 0.8rem;
+    font-size: 1.65rem;
+  }
+  #projects .card p {
+    font-weight: 600;
+    font-size: 1.15rem;
+    flex-grow: 1;
+    user-select: text;
+  }
+  /* Wrap anchor tag for projects */
+  #projects .grid a {
+    text-decoration: none;
+    color: inherit;
+  }
+  #projects .grid a:hover .card,
+  #projects .grid a:focus .card {
+    color: #90caf9;
+    box-shadow: 0 10px 30px #3b82f6d9;
+    transform: translateY(-8px);
+    outline: none;
+  }
+
+  /* Achievements with full width stacked cards */
+  #achievements .grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Contact form */
+  section.contact form {
+    max-width: 540px;
+    margin: 0 auto 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.4rem;
+  }
+  section.contact input[type=text],
+  section.contact input[type=email],
+  section.contact textarea {
+    padding: 1rem 1.2rem;
+    border-radius: 10px;
+    border: 2px solid #415485;
+    background-color: #1e293b;
+    font-size: 1.1rem;
+    font-family: inherit;
+    transition: border-color 0.3s ease;
+    color: #dbeafe;
+    resize: vertical;
+  }
+  section.contact input[type=text]:focus,
+  section.contact input[type=email]:focus,
+  section.contact textarea:focus {
+    border-color: #64b5f6;
+    outline: none;
+    background-color: #273549;
+  }
+  section.contact textarea {
+    min-height: 140px;
+  }
+  section.contact button {
+    background-color: #3b82f6;
+    color: white;
+    font-weight: 700;
+    border: none;
+    border-radius: 12px;
+    padding: 1rem;
+    font-size: 1.3rem;
+    cursor: pointer;
+    box-shadow: 0 5px 15px #1e40af88;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  section.contact button:hover, section.contact button:focus {
+    background-color: #90caf9;
+    color: #1e293b;
+    outline: none;
+    box-shadow: 0 8px 25px #90caf999;
+  }
+
+  /* Contact icons */
+  .contact-icons {
+    display: flex;
+    justify-content: center;
+    gap: 2.2rem;
+    margin-top: 1.8rem;
+  }
+  .contact-icons a {
+    width: 36px;
+    height: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease;
+    color: #64b5f6;
+  }
+  .contact-icons a:hover,
+  .contact-icons a:focus {
+    transform: scale(1.15);
+    outline: none;
+    color: #90caf9;
+  }
+  .contact-icons svg {
+    width: 28px;
+    height: 28px;
+    fill: currentColor;
+  }
+
+  /* Footer and Return to top */
+  footer {
+    text-align: center;
+    padding: 2rem 1rem 3rem;
+    font-size: 0.9rem;
+    color: #90caf9;
+    width: 100%;
+    border-top: 1px solid #415485aa;
+    background-color: #121620;
+    margin-top: auto;
+    user-select: none;
+  }
+  .return-top {
+    display: inline-block;
+    margin-top: 0.6rem;
+    padding: 0.4rem 1.2rem;
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 1;
+    color: #90caf9;
+    border: 2px solid #90caf9;
+    border-radius: 25px;
+    cursor: pointer;
+    text-decoration: none;
+    box-shadow: 0 0 15px rgba(144, 202, 249, 0.4);
+    transition: all 0.3s ease;
+    user-select: none;
+  }
+  .return-top:hover,
+  .return-top:focus {
+    color: #1e40af;
+    background: #90caf9;
+    border-color: #1e40af;
+    box-shadow: 0 0 25px rgba(144, 202, 249, 0.7);
+    outline: none;
+    transform: translateY(-3px);
+  }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    #projects .grid {
+      grid-template-columns: 1fr 1fr;
+    }
+    #activities .grid,
+    #projects .grid {
+      grid-gap: 1.8rem;
+    }
+    #achievements .grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  @media (max-width: 600px) {
+    .about-content {
+      flex-direction: column;
+      align-items: center;
+    }
+    nav {
+      flex-direction: column;
+      gap: 1rem;
+    }
+    nav ul {
+      justify-content: center;
+    }
+    header .hero h2 {
+      font-size: 2.1rem;
+    }
+    #projects .grid,
+    #activities .grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* Skills section */
+  #skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    margin-bottom: 3rem;
+  }
+  .skill-pill {
+    background: #273549;
+    color: #bbdefb;
+    padding: 0.6rem 1.2rem;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 1rem;
+    box-shadow: 0 0 8px #64b5f6a8;
+    user-select: none;
+    transition: background-color 0.3s, color 0.3s;
+    cursor: default;
+  }
+  .skill-pill:hover,
+  .skill-pill:focus {
+    background-color: #64b5f6;
+    color: #121620;
+    outline: none;
+  }
+</style>
+</head>
+<body id="top">
+
+<!-- Loading spinner -->
+<div id="loader" role="alert" aria-busy="true" aria-label="Loading page content">
+  <div class="spinner"></div>
+</div>
+
+<nav>
+  <h1>Pratik Bothra</h1>
+  <ul>
+    <li><a href="#about" tabindex="0">About</a></li>
+    <li><a href="#skills" tabindex="0">Skills</a></li>
+    <li><a href="#activities" tabindex="0">Activities</a></li>
+    <li><a href="#projects" tabindex="0">Projects</a></li>
+    <li><a href="#achievements" tabindex="0">Achievements</a></li>
+    <li><a href="#contact" tabindex="0">Contact</a></li>
+  </ul>
+</nav>
+
+<header class="hero">
+  <h2>Hi, I'm Pratik</h2>
+  <p>Frontend Developer | Designer | Creative Thinker</p>
+  <a href="#activities" class="btn" aria-label="See My Activities">See My Activities</a>
+</header>
+
+<main>
+  <section id="about" tabindex="-1">
+    <h2>About Me</h2>
+    <div class="about-content">
+      <div class="text">
+        <p>Hello! I'm a passionate web developer with experience in creating beautiful and responsive websites. I love using modern technologies and creative designs.</p>
+        <p>Over the years, I have worked on numerous projects that span from simple landing pages to complex web applications. I enjoy problem-solving and learning new skills that help me deliver exceptional digital experiences.</p>
+        <p>When I'm not coding, I explore UI/UX trends, sketching, and animations to bring websites to life. Always excited to collaborate and create impactful projects!</p>
+        <p>Feel free to reach out and connect!</p>
+      </div>
+      <div class="image">
+        <img src="photograph.jpg" alt="Profile Picture" class="profile-photo" />
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" tabindex="-1">
+    <h2>Skills</h2>
+    <div id="skills">
+      <span class="skill-pill" tabindex="0">HTML</span>
+      <span class="skill-pill" tabindex="0">CSS</span>
+      <span class="skill-pill" tabindex="0">JavaScript</span>
+      <span class="skill-pill" tabindex="0">MERN Stack</span>
+      <span class="skill-pill" tabindex="0">Java</span>
+      <span class="skill-pill" tabindex="0">Python</span>
+      <span class="skill-pill" tabindex="0">MySQL</span>
+      <span class="skill-pill" tabindex="0">Git</span>
+      <span class="skill-pill" tabindex="0">REST APIs</span>
+    </div>
+  </section>
+
+  <section id="activities" tabindex="-1">
+    <h2>Activities</h2>
+    <div class="grid">
+      <a href="index1.html" tabindex="0"><div class="card"><h3>Activity 1</h3><p>My first webpage.</p></div></a>
+      <a href="index2.html" tabindex="0"><div class="card"><h3>Activity 2</h3><p>Contact form design.</p></div></a>
+      <a href="index3.html" tabindex="0"><div class="card"><h3>Activity 3</h3><p>Weekend plan list.</p></div></a>
+      <a href="index4.html" tabindex="0"><div class="card"><h3>Activity 4</h3><p>Movie collection table.</p></div></a>
+      <a href="index5.html" tabindex="0"><div class="card"><h3>Activity 5</h3><p>About me page.</p></div></a>
+      <a href="index6.html" tabindex="0"><div class="card"><h3>Activity 6</h3><p>Recipe page.</p></div></a>
+      <a href="index7.html" tabindex="0"><div class="card"><h3>Activity 7</h3><p>Shapes.</p></div></a>
+      <a href="index8.html" tabindex="0"><div class="card"><h3>Activity 8</h3><p>Profile card design.</p></div></a>
+      <a href="index9.html" tabindex="0"><div class="card"><h3>Activity 9</h3><p>Dog gallery layout.</p></div></a>
+      <a href="index10.html" tabindex="0"><div class="card"><h3>Activity 10</h3><p>Grid layout design.</p></div></a>
+      <a href="index11.html" tabindex="0"><div class="card"><h3>Activity 11</h3><p>Animated Ferris wheel.</p></div></a>
+      <a href="index12.html" tabindex="0"><div class="card"><h3>Activity 12</h3><p>Moon orbit animation.</p></div></a>
+    </div>
+  </section>
+
+  <section id="projects" tabindex="-1">
+    <h2>Projects</h2>
+    <div class="grid">
+      <a href="https://github.com/PRATIK-BOTHRA/facedetectionjs" tabindex="0"><div class="card"><h3>Project 1</h3><p>Mood Detection using js.</p></div></a>
+      <a href="https://github.com/PRATIK-BOTHRA/objectdetection1" tabindex="0"><div class="card"><h3>Project 2</h3><p>Object Detection Using Python</p></div></a>
+      <a href="https://github.com/PRATIK-BOTHRA/kaun-banega-crorepati" tabindex="0"><div class="card"><h3>Project 3</h3><p>KBC Game Using Python</p></div></a>
+      <a href="https://github.com/PRATIK-BOTHRA/freecell-soliatre" tabindex="0"><div class="card"><h3>Project 4</h3><p>Frecell Solitaire Game Using JS,HTML And CSS</p></div></a>
+    </div>
+  </section>
+
+  <section id="achievements" tabindex="-1">
+    <h2>Achievements</h2>
+    <div class="grid">
+      <a href="#" tabindex="0"><div class="card">
+        <h3>Full-Time Position</h3>
+        <ul>
+          <li>Currently working at <strong>Aether Labs</strong> as a Full Stack Web Developer</li>
+          <li>Started in September 2025</li>
+        </ul>
+      </div></a>
+      <a href="#" tabindex="0"><div class="card">
+        <h3>Internships</h3>
+        <ul>
+          <li>Internship at <strong>Unifie Mentor Private Limited</strong> as Full Stack Web Developer</li>
+          <li>Started October 2025</li>
+        </ul>
+      </div></a>
+    </div>
+  </section>
+
+  <section id="contact" class="contact" tabindex="-1">
+    <h2>Contact Me</h2>
+    <form action="send_message.php" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required aria-label="Your Name" />
+      <input type="email" name="email" placeholder="Your Email" required aria-label="Your Email" />
+      <textarea name="message" placeholder="Your Message" required aria-label="Your Message"></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+    <div class="contact-icons" aria-label="Social links">
+      <a href="https://www.linkedin.com/in/pratik-bothra-358913375/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile" tabindex="0">
+        <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.327-.474-2.232-1.66-2.232-.905 0-1.444.609-1.683 1.198-.087.211-.108.503-.108.796v5.807h-3.554s.047-9.417 0-10.39h3.554v1.472c.472-.73 1.316-1.77 3.205-1.77 2.34 0 4.096 1.528 4.096 4.81v6.878zM5.337 7.433c-1.209 0-2.001.793-2.001 1.837 0 1.023.768 1.838 1.954 1.838h.023c1.233 0 2-.815 2-1.838-.023-1.044-.767-1.837-1.976-1.837zm-1.778 13.019h3.554v-10.39H3.559v10.39zM22.225 0H1.771C.792 0 0 .774 0 1.726v20.548C0 23.225.792 24 1.771 24h20.451C23.2 24 24 23.225 24 22.274V1.726C24 .774 23.2 0 22.225 0z"/></svg>
+      </a>
+      <a href="https://github.com/PRATIK-BOTHRA" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile" tabindex="0">
+        <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.207 11.387.6.113.82-.263.82-.582v-2.234c-3.338.726-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.757-1.333-1.757-1.09-.746.083-.73.083-.73 1.205.084 1.84 1.236 1.84 1.236 1.07 1.833 2.807 1.304 3.492.996.106-.775.42-1.305.763-1.606-2.665-.303-5.466-1.334-5.466-5.93 0-1.312.47-2.38 1.236-3.22-.124-.303-.536-1.52.117-3.176 0 0 1.008-.322 3.3 1.23a11.46 11.46 0 013.003-.403 11.45 11.45 0 013.003.403c2.29-1.553 3.296-1.23 3.296-1.23.656 1.657.244 2.874.12 3.176.77.84 1.234 1.908 1.234 3.22 0 4.61-2.8 5.625-5.475 5.922.43.37.823 1.103.823 2.222v3.293c0 .32.216.699.825.58C20.565 21.796 24 17.296 24 12c0-6.63-5.373-12-12-12z"/></svg>
+      </a>
+      <a href="mailto:pratikpankajkumar.25bcs10089@sst.scaler.com" aria-label="Send Email" tabindex="0">
+        <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M20 4H4c-1.103 0-2 .897-2 2v12c0 1.103.897 2 2 2h16c1.104 0 2-.897 2-2V6c0-1.103-.896-2-2-2zm0 2v.511l-8 5.499-8-5.499V6h16zm0 12H4V8.089l8 5.5 8-5.5V18z"/></svg>
+      </a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>&copy; 2025 Pratik. All rights reserved.</p>
+  <a href="#top" class="return-top" aria-label="Return to top of page">↑ Return to Top</a>
+</footer>
+
+<script>
+  window.addEventListener('load', () => {
+    const loader = document.getElementById('loader');
+    if(loader) loader.style.display = 'none';
+    document.body.style.opacity = '1';
+  });
+</script>
+
+</body>
+</html>
