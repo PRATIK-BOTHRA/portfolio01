@@ -61,6 +61,24 @@
     100% { transform: rotate(360deg);}
   }
 
+  /* Typing Animation */
+  .typing {
+    display: inline-block;
+    border-right: 3px solid #bbdefb;
+    font-size: 3rem;
+    font-weight: 700;
+    color: #bbdefb;
+    white-space: nowrap;
+    overflow: hidden;
+    letter-spacing: 2px;
+    animation: blink-cursor 0.8s steps(1) infinite;
+    min-width: 15ch;
+  }
+  @keyframes blink-cursor {
+    0%,100% { border-right-color: #bbdefb; }
+    50% { border-right-color: transparent; }
+  }
+
   /* Navigation */
   nav {
     position: fixed;
@@ -147,12 +165,6 @@
     text-align: center;
     margin-bottom: 4rem;
     color: #8eb3ff;
-  }
-  .hero h2 {
-    font-size: 3rem;
-    margin-bottom: 0.3rem;
-    font-weight: 700;
-    color: #bbdefb;
   }
   .hero p {
     font-size: 1.5rem;
@@ -252,7 +264,6 @@
   #activities .grid {
     grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
   }
-  /* Wrap anchor tag around each card */
   #activities .grid a {
     text-decoration: none;
     color: inherit;
@@ -296,7 +307,6 @@
     flex-grow: 1;
     user-select: text;
   }
-  /* Wrap anchor tag for projects */
   #projects .grid a {
     text-decoration: none;
     color: inherit;
@@ -463,33 +473,6 @@
       grid-template-columns: 1fr;
     }
   }
-
-  /* Skills section */
-  #skills {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    justify-content: center;
-    margin-bottom: 3rem;
-  }
-  .skill-pill {
-    background: #273549;
-    color: #bbdefb;
-    padding: 0.6rem 1.2rem;
-    border-radius: 999px;
-    font-weight: 600;
-    font-size: 1rem;
-    box-shadow: 0 0 8px #64b5f6a8;
-    user-select: none;
-    transition: background-color 0.3s, color 0.3s;
-    cursor: default;
-  }
-  .skill-pill:hover,
-  .skill-pill:focus {
-    background-color: #64b5f6;
-    color: #121620;
-    outline: none;
-  }
 </style>
 </head>
 <body id="top">
@@ -512,7 +495,7 @@
 </nav>
 
 <header class="hero">
-  <h2>Hi, I'm Pratik</h2>
+  <h2 class="typing" id="typing-title"></h2>
   <p>Frontend Developer | Designer | Creative Thinker</p>
   <a href="#activities" class="btn" aria-label="See My Activities">See My Activities</a>
 </header>
@@ -589,7 +572,7 @@
       <a href="#" tabindex="0"><div class="card">
         <h3>Internships</h3>
         <ul>
-          <li>Internship at <strong>Unifie Mentor Private Limited</strong> as Full Stack Web Developer</li>
+          <li>Internship at <strong>Unified Mentor Private Limited</strong> as Full Stack Web Developer</li>
           <li>Started October 2025</li>
         </ul>
       </div></a>
@@ -628,8 +611,21 @@
     const loader = document.getElementById('loader');
     if(loader) loader.style.display = 'none';
     document.body.style.opacity = '1';
+
+    // Typing Animation JS
+    const text = "Hi, I'm Pratik";
+    const typingTitle = document.getElementById('typing-title');
+    let index = 0;
+    function type() {
+      if (index <= text.length) {
+        typingTitle.textContent = text.slice(0, index);
+        index++;
+        setTimeout(type, 110);
+      }
+    }
+    type();
   });
 </script>
 
 </body>
-</html>
+  </html>
