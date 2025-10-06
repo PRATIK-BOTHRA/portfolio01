@@ -4,11 +4,10 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="description" content="Portfolio of Pratik Bothra, Full Stack Developer - AI-powered scalable web applications, activities, projects, achievements, skills, and contact details." />
-<meta name="keywords" content="Full Stack Developer, Portfolio, Web Development, AI, Aether Labs, Unifie Mentor, Projects, Achievements, Skills, HTML, CSS, JavaScript, MERN, Java, Python, MySQL" />
+<meta name="keywords" content="Full Stack Developer, Portfolio, Web Development, AI, Aether Labs, Unified Mentor, Projects, Achievements, Skills, HTML, CSS, JavaScript, MERN, Java, Python, MySQL" />
 <meta name="author" content="Pratik Bothra" />
 <title>Pratik Bothra | Full Stack Developer Portfolio</title>
 <style>
-  /* Reset & base */
   *, *::before, *::after {
     margin: 0; padding: 0; box-sizing: border-box;
   }
@@ -36,8 +35,6 @@
     text-decoration: underline;
     outline: none;
   }
-
-  /* Loading spinner */
   #loader {
     position: fixed;
     z-index: 2000;
@@ -60,8 +57,6 @@
     0% { transform: rotate(0deg);}
     100% { transform: rotate(360deg);}
   }
-
-  /* Typing Animation */
   .typing {
     display: inline-block;
     border-right: 3px solid #bbdefb;
@@ -78,8 +73,6 @@
     0%,100% { border-right-color: #bbdefb; }
     50% { border-right-color: transparent; }
   }
-
-  /* Navigation */
   nav {
     position: fixed;
     top: 0; left: 0; right: 0;
@@ -114,8 +107,42 @@
     border-bottom-color: #90caf9;
     color: #90caf9;
   }
-
-  /* Section general */
+  #hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 28px;
+    height: 22px;
+    cursor: pointer;
+  }
+  #hamburger span {
+    width: 100%;
+    height: 3px;
+    background-color: #64b5f6;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+  @media (max-width: 768px) {
+    nav ul {
+      display: none;
+      flex-direction: column;
+      gap: 1rem;
+      background-color: #1f2937;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      right: 0;
+      padding: 1rem 2rem;
+      border-radius: 0 0 14px 14px;
+      z-index: 1500;
+    }
+    nav ul.show {
+      display: flex;
+    }
+    #hamburger {
+      display: flex;
+    }
+  }
   section {
     background-color: #1f2937;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.7);
@@ -134,8 +161,6 @@
     padding-bottom: 0.4rem;
     font-weight: 700;
   }
-
-  /* About */
   .about-content {
     display: flex;
     flex-wrap: wrap;
@@ -159,8 +184,6 @@
     border: 4px solid #64b5f6;
     box-shadow: 0 5px 15px #4069c9cc;
   }
-
-  /* Hero */
   .hero {
     text-align: center;
     margin-bottom: 4rem;
@@ -188,8 +211,6 @@
     box-shadow: 0 5px 30px #3b82f6d9;
     outline: none;
   }
-
-  /* Skills section */
   #skills {
     display: flex;
     flex-wrap: wrap;
@@ -214,8 +235,6 @@
     color: #121620;
     outline: none;
   }
-
-  /* Shared grid card style for Activities & Achievements */
   .grid {
     display: grid;
     gap: 2rem;
@@ -259,8 +278,6 @@
     list-style: disc;
     margin-top: 0.5rem;
   }
-
-  /* Activities grid 12 cards (4 columns max) */
   #activities .grid {
     grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
   }
@@ -275,8 +292,6 @@
     transform: translateY(-8px);
     outline: none;
   }
-
-  /* Projects grid 4 cards in 2 by 2 */
   #projects .grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -318,13 +333,9 @@
     transform: translateY(-8px);
     outline: none;
   }
-
-  /* Achievements with full width stacked cards */
   #achievements .grid {
     grid-template-columns: 1fr;
   }
-
-  /* Contact form */
   section.contact form {
     max-width: 540px;
     margin: 0 auto 2rem;
@@ -373,8 +384,6 @@
     outline: none;
     box-shadow: 0 8px 25px #90caf999;
   }
-
-  /* Contact icons */
   .contact-icons {
     display: flex;
     justify-content: center;
@@ -401,8 +410,6 @@
     height: 28px;
     fill: currentColor;
   }
-
-  /* Footer and Return to top */
   footer {
     text-align: center;
     padding: 2rem 1rem 3rem;
@@ -439,8 +446,6 @@
     outline: none;
     transform: translateY(-3px);
   }
-
-  /* Responsive */
   @media (max-width: 900px) {
     #projects .grid {
       grid-template-columns: 1fr 1fr;
@@ -476,8 +481,6 @@
 </style>
 </head>
 <body id="top">
-
-<!-- Loading spinner -->
 <div id="loader" role="alert" aria-busy="true" aria-label="Loading page content">
   <div class="spinner"></div>
 </div>
@@ -492,14 +495,17 @@
     <li><a href="#achievements" tabindex="0">Achievements</a></li>
     <li><a href="#contact" tabindex="0">Contact</a></li>
   </ul>
+  <div id="hamburger" tabindex="0" aria-label="Toggle menu" role="button">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
 </nav>
-
 <header class="hero">
   <h2 class="typing" id="typing-title"></h2>
   <p>Frontend Developer | Designer | Creative Thinker</p>
   <a href="#activities" class="btn" aria-label="See My Activities">See My Activities</a>
 </header>
-
 <main>
   <section id="about" tabindex="-1">
     <h2>About Me</h2>
@@ -515,7 +521,6 @@
       </div>
     </div>
   </section>
-
   <section id="skills" tabindex="-1">
     <h2>Skills</h2>
     <div id="skills">
@@ -530,7 +535,6 @@
       <span class="skill-pill" tabindex="0">REST APIs</span>
     </div>
   </section>
-
   <section id="activities" tabindex="-1">
     <h2>Activities</h2>
     <div class="grid">
@@ -611,8 +615,6 @@
     const loader = document.getElementById('loader');
     if(loader) loader.style.display = 'none';
     document.body.style.opacity = '1';
-
-    // Typing Animation JS
     const text = "Hi, I'm Pratik";
     const typingTitle = document.getElementById('typing-title');
     let index = 0;
@@ -625,7 +627,19 @@
     }
     type();
   });
+  const hamburger = document.getElementById('hamburger');
+  const navMenu = document.querySelector('nav ul');
+
+  hamburger.addEventListener('click', () => {
+    navMenu.classList.toggle('show');
+  });
+  hamburger.addEventListener('keypress', (e) => {
+    if(e.key === 'Enter' || e.key === ' ') {
+      navMenu.classList.toggle('show');
+      e.preventDefault();
+    }
+  });
 </script>
 
 </body>
-  </html>
+</html>
